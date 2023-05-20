@@ -20,7 +20,7 @@
 				<div class="col-md-6">
 				<div class="footer-section 2">
          <center>
-         <h3>Developed By Aakriti Rouniyar</h3>
+         <h2>Developed By Aakriti Rouniyar</h2>
          <a href="http://www.facebook.com/akritirouniyar"><i class="fa fa-facebook"></i></a>
          <a href="http://www.instagram.com/akritirouniyar"><i class="fa fa-instagram"></i></a>
        </center>

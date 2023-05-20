@@ -14,10 +14,8 @@ if(isset($_POST) & !empty($_POST)){
 	if($_POST['agree'] == true){
 		$country = filter_var($_POST['country'], FILTER_SANITIZE_STRING);
 		$fname = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
-		$lname = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
 		$city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
 		$address1 = filter_var($_POST['address1'], FILTER_SANITIZE_STRING);
-		$address2 = filter_var($_POST['address2'], FILTER_SANITIZE_STRING);
 		$phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
 		$payment = filter_var($_POST['payment'], FILTER_SANITIZE_STRING);
 		
@@ -28,7 +26,7 @@ if(isset($_POST) & !empty($_POST)){
 		$count = mysqli_num_rows($res);
 		if($count == 1){
 			//update data in usersmeta table
-			$usql = "UPDATE usersmeta SET country='$country', firstname='$fname', lastname='$lname', address1='$address1', address2='$address2', city='$city', state='$state',  zip='$zip', company='$company', mobile='$phone' WHERE uid=$uid";
+			$usql = "UPDATE usersmeta SET country='$country', firstname='$fname',   address1='$address1',  city='$city',  mobile='$phone' WHERE uid=$uid";
 			$ures = mysqli_query($connection, $usql) or die(mysqli_error($connection));
 			if($ures){
 
@@ -70,7 +68,7 @@ if(isset($_POST) & !empty($_POST)){
 			}
 		}else{
 			//insert data in usersmeta table
-			$isql = "INSERT INTO usersmeta (country, firstname, lastname, address1, address2, city, state, zip, company, mobile, uid) VALUES ('$country', '$fname', '$lname', '$address1', '$address2', '$city', '$state', '$zip', '$company', '$phone', '$uid')";
+			$isql = "INSERT INTO usersmeta (country, fullname, address1, city,  mobile ) VALUES ('$country', '$fname',   '$address', '$city',  '$phone')";
 			$ires = mysqli_query($connection, $isql) or die(mysqli_error($connection));
 			if($ires){
 
@@ -167,18 +165,13 @@ $r = mysqli_fetch_assoc($res);
 							<div class="clearfix space20"></div>
 							<div class="row">
 								<div class="col-md-6">
-									<label>First Name </label>
-									<input name="fname" class="form-control" placeholder="" value="<?php if(!empty($r['firstname'])){ echo $r['firstname']; } elseif(isset($fname)){ echo $fname; } ?>" type="text">
+									<label>Full Name </label>
+									<input name="fname" class="form-control" placeholder="" value="<?php if(!empty($r['full'])){ echo $r['full']; } elseif(isset($fname)){ echo $fname; } ?>" type="text">
 								</div>
-								<div class="col-md-6">
-									<label>Last Name </label>
-									<input name="lname" class="form-control" placeholder="" value="<?php if(!empty($r['lastname'])){ echo $r['lastname']; }elseif(isset($lname)){ echo $lname; } ?>" type="text">
-								</div>
+						
 							</div>
 							<label>Address </label>
-							<input name="address1" class="form-control" placeholder="Street address" value="<?php if(!empty($r['address1'])){ echo $r['address1']; } elseif(isset($address1)){ echo $address1; } ?>" type="text">
-							<div class="clearfix space20"></div>
-							<input name="address2" class="form-control" placeholder="Apartment, suite, unit etc. (optional)" value="<?php if(!empty($r['address2'])){ echo $r['address2']; }elseif(isset($address2)){ echo $address2; } ?>" type="text">
+							<input name="address1" class="form-control" placeholder=" address1" value="<?php if(!empty($r['address1'])){ echo $r['address1']; } elseif(isset($address1)){ echo $address1; } ?>" type="text">
 							<div class="clearfix space20"></div>
 							<div class="row">
 								<div class="col-md-4">

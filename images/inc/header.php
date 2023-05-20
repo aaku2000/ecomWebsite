@@ -126,7 +126,7 @@ a{
 
 
 .logregform label{
-	color:white!important
+	color:black!important
 }
 .displaybtn{
 
@@ -146,7 +146,7 @@ white-space:nowrap
 }
 
 .billing-details label{
-	color:white
+	color:black
 }
 
 .btn-primary {

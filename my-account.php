@@ -81,13 +81,12 @@ $cart = $_SESSION['cart'];
 				<div class="col-md-6">
 								<h4>My Address <a href="edit-address.php">Edit</a></h4>
 					<?php
-						$csql = "SELECT u1.firstname, u1.lastname, u1.address1, u1.address2, u1.city,  u1.country,  u.email, u1.mobile FROM users u JOIN usersmeta u1 WHERE u.id=u1.uid AND u.id=$uid";
+						$csql = "SELECT u1.fullname, u1.address1, u1.city,  u1.country,  u.email, u1.mobile FROM users u JOIN usersmeta u1 WHERE u.id=u1.uid AND u.id=$uid";
 						$cres = mysqli_query($connection, $csql);
 						if(mysqli_num_rows($cres) == 1){
 							$cr = mysqli_fetch_assoc($cres);
-							echo "<p>".$cr['firstname'] ." ". $cr['lastname'] ."</p>";
+							echo "<p>".$cr['fullname']. "</p>";
 							echo "<p>".$cr['address1'] ."</p>";
-							echo "<p>".$cr['address2'] ."</p>";
 							echo "<p>".$cr['city'] ."</p>";							
 							echo "<p>".$cr['country'] ."</p>";				
 							echo "<p>".$cr['mobile'] ."</p>";
